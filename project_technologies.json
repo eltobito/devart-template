@@ -1,13 +1,13 @@
 {
     "technologies": {
         "apis": [
-            "insert apis"
+            "twitter"
         ],
         "platforms": [
-            "insert platforms"
+            "ios"
         ],
         "toolkits": [
-            "insert toolkits"
+            "go"
         ]
     },
     "themes": [
