@@ -8,7 +8,8 @@ on the web.
 
 Below is the picture of my draw
 
-![Example Image](../project_images/go.png?raw=true "Draw Image
+
+![Example Image](../project_images/island.jpg?raw=true "Montreal island hand draw")
 
 func TestDrawMosaic() {
 	im, gc := initGc(300, 300)
