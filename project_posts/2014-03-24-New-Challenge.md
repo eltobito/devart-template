@@ -5,7 +5,7 @@ and I will be won't have any string attached for the library.
 
 I have done a couple of test to generate an image where every pixel are random. 
 
-![Example Image](../project_images/go.jpg?raw=true "Draw Image")
+![Example Image](../project_images/go.png?raw=true "Random pixel")
 
 Below is the picture of my draw
 
