@@ -1,37 +1,49 @@
-I have done some reseach to find which api is the best to retrieve data that are making sense for the thing I want to express. The Montreal Island image is now dead. I drop that idea.
-I decide to compare 3 countries with data generate by people from those countries. Words that have a social meaning for me like love, fun or family.
-I did'dnt decide yet the exact words and which service I gonna fetch.
+I decide to use another language instead of Python. The reason is that way I won't nead to
+use a Google api to be respect the rules of the project. I have done a couple of research and 
+i saw that GO have an image library. So I decide to learn and use that language from google
+and I will be won't have any string attached for the library.
 
-To respect the rules of the project I start to look at Googles API. The one I found more interessting is  Youtube. Here are the kind of queries I tried.
+I have done a couple of test to generate an image where every pixel are random. 
 
-https://www.googleapis.com/youtube/v3/search?part=snippet&publishedAfter=2013-12-21T00%3A00%3A00Z&publishedBefore=2014-03-20T00%3A00%3A00Z&q=democracy+ukraine&key={YOUR_API_KEY}
+![Example Image](../project_images/go.jpg?raw=true "Draw Image")
 
-https://www.googleapis.com/youtube/v3/search?part=snippet&publishedAfter=2013-03-21T00%3A00%3A00Z&publishedBefore=2013-07-20T00%3A00%3A00Z&q=democratie+Quebec&key={YOUR_API_KEY}
+Below is the picture of my draw
 
-But I'm not convince yet how these data are meaningfull
+![Example Image](../project_images/go.png?raw=true "Draw Image
 
-So for now I know I have to use an image library (PIL) and some call rest to retrieve data from social media (or kind of)  service.
+func TestDrawMosaic() {
+  im, gc := initGc(300, 300)
+  // draw a cubic curve
+  rand.Seed(time.Now().UnixNano())
+  rand.Intn(255)
 
-- Show headers -
-  
-{
- "kind": "youtube#searchListResponse",
- "etag": "\"PoAnP6GALHRQwbIPTryP-ZGqRQg/r7u4v_cJ2xETj8TM-QbTYe_b6ZA\"",
- "nextPageToken": "CAUQAA",
- "pageInfo": {
-  "totalResults": 1000000,
-  "resultsPerPage": 5
- },
- "items": [
-  {
-   "kind": "youtube#searchResult",
-   "etag": "\"PoAnP6GALHRQwbIPTryP-ZGqRQg/HxtOyVQ7kbYW9oJUw2xT-pFYkFc\"",
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "Wp3zyoOROUo"
-   },
-   "snippet": {
-    "publishedAt": "2014-03-17T14:42:25.000Z",
-    "channelId": "UCPXRVaGxKOgHXXubivY4-nw",
-    "title": "My Transition to Eating 100% RAW ♥ (Skin & Health Improvements!)",
-    "description": "Hi everyone! This video was initially A LOT longer because I guess there's just so much to say on this \"new change\" :) but I tried to keep all the topics sho...",
+  r, g, b, a := random(0, 255), random(0, 255), random(0, 255), 255
+
+  //fmt.Printf("%d\nallo%d", b,r)
+  //b1 := m.Bounds()
+  gc.SetLineWidth(1)
+  gc.MoveTo(1.0, 1.0)
+  var (
+    cstart color.Color = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
+  )
+  gc.SetStrokeColor(cstart)
+  gc.Stroke()
+  for y := 1.0; y < 300.0; y++ {
+    for x := 1.0; x < 300.0; {
+
+      gc.MoveTo(x, y)
+      r, g, b, a := random(0, 255), random(0, 255), random(0, 255), 255
+      cstart = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
+      gc.SetStrokeColor(cstart)
+
+      // draw segment of curve
+
+      x++
+      gc.LineTo(x, y)
+      //gc.LineTo(x3, y3)
+      gc.Stroke()
+    }
+  }
+
+  saveToPngFile("TestDrawMosaic", im)
+}
