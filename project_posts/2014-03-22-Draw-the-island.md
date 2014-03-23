@@ -6,4 +6,6 @@ the number of tweet of the Montreal region.
 For now I have tweeter im my mind but a can change my mind after I'll explore different api i'll find
 on the web.
 
-![Example Image](../project_images/island.jpg?raw=true "Example Image")
+Below is the picture of my draw
+
+![Example Image](../project_images/island.jpg?raw=true "Draw Image")
