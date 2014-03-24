@@ -1,5 +1,7 @@
+![Example Image](project_images/cover.jpg?raw=true "Example Image")
+
 # Project Title
-Beat
+Guns in a modern world
 
 ## Authors
 Name : Tobie Charette
@@ -13,10 +15,7 @@ Most people live in cities. Why people have the need to own firearms? Why goverm
 limit the possesion of firearms like semi-automatic? This project want to expose impact of firarms
 on the society 
 
-## Link to Prototype
-NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
 
-[Example Link](http://www.google.com "Example Link")
 
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
@@ -26,13 +25,16 @@ function test() {
 }
 ```
 ## Links to External Libraries
- NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
 
-[Example Link](http://www.google.com "Example Link")
+[Draw2d](https://code.google.com/p/draw2d/ "Draw2d")
+
+
+##Data reference
+[Gun reference](http://www.gunpolicy.org/fr/documents "Gun reference")
 
 ## Images & Videos
 NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
 
-![Example Image](project_images/cover.jpg?raw=true "Example Image")
+
 
 
