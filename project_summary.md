@@ -1,5 +1,3 @@
-![Example Image](project_images/cover.jpg?raw=true "Example Image")
-
 # Project Title
 Guns in a modern world
 
