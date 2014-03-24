@@ -8,9 +8,10 @@ GitHub : https://github.com/eltobito/devart-template
 
 
 ## Description
-When a child born, above all, we are waiting for a beat and a sound.
-With that first beat and that first sound we will know a new life is starting. 
-Urban life have a beat too. Is it possible to draw and hear that beat?
+One of the most twisted relation we have in this modern society is the relation we have with firearms.
+Most people live in cities. Why people have the need to own firearms? Why goverments are reluctant to 
+limit the possesion of firearms like semi-automatic? This project want to expose impact of firarms
+on the society 
 
 ## Link to Prototype
 NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
