@@ -7,10 +7,6 @@ I have done a couple of test to generate an image where every pixel are random.
 
 ![Example Image](../project_images/go.png?raw=true "Random pixel")
 
-Below is the picture of my draw
-
-![Example Image](../project_images/go.png?raw=true "Draw Image
-
     func TestDrawMosaic() {
       im, gc := initGc(300, 300)
       // draw a cubic curve
