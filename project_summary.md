@@ -3,7 +3,9 @@ Guns in a modern world
 
 ## Authors
 Name : Tobie Charette
+
 Surname : Eltobito
+
 GitHub : https://github.com/eltobito/devart-template
 
 
@@ -25,6 +27,7 @@ function test() {
 ## Links to External Libraries
 
 [Draw2d](https://code.google.com/p/draw2d/ "Draw2d")
+
 [TOML](https://github.com/BurntSushi/toml "TOML")
 
 
