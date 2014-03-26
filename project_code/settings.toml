@@ -1,0 +1,25 @@
+[Countries]
+
+	[Countries.CA]
+	deathbygun = 0.5
+	guns = 23.8 
+	rank = 12
+	pop = 35344962
+	from = 0
+	to = 750
+
+	[Countries.US]
+	deathbygun = 3.6
+	guns = 100.0
+	rank = 1
+	pop = 317751000
+	from = 750
+	to = 1500
+
+	[Countries.UK]
+	deathbygun = 0.06
+	guns = 6.7 
+	rank = 22
+	pop = 63705000
+	from = 1500
+	to = 2250

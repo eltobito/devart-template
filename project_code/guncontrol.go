@@ -31,6 +31,8 @@ type Country struct {
 	Guns       float64
 	Rank       int
 	Pop        int
+	From       int
+	To         int
 }
 
 type tomlConfig struct {
@@ -38,20 +40,20 @@ type tomlConfig struct {
 }
 
 func main() {
-	var pays tomlConfig
-	if _, err := toml.DecodeFile("settings.toml", &pays); err != nil {
+	var angloSaxon tomlConfig
+	if _, err := toml.DecodeFile("settings.toml", &angloSaxon); err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	for name, can := range pays.Countries {
+	for name, can := range angloSaxon.Countries {
 		fmt.Printf("Server: %s %f \n", name, can.Deathbygun)
 	}
 
 	//TestStar()
 	//var pop = averagepop(pays.Countries["canada"].Pop, pays.Countries["us"].Pop, pays.Countries["uk"].Pop)
 
-	TestDrawLines(pays.Countries, 1000)
+	TestDrawLines(angloSaxon.Countries, 1000)
 	//TestDrawMosaic()
 	//TestFillString()
 	//spot()
@@ -69,8 +71,8 @@ func Show(name string) {
 	}
 }
 
-func TestDrawLines(pays map[string]Country, population int) {
-	im, gc := initGc(2562, 1600)
+func TestDrawLines(angloSaxon map[string]Country, population int) {
+	im, gc := initGc(2250, 1600)
 	rand.Seed(time.Now().UnixNano())
 	fmt.Printf("population %d \n", population)
 	// draw a cubic curve
@@ -86,7 +88,7 @@ func TestDrawLines(pays map[string]Country, population int) {
 	//gc.Stroke()
 	//for y := 1.0; y < 600.0; y++ {
 
-	for x := 0.0; x < 2562.0; {
+	for x := 0.0; x < 2300.0; {
 
 		gc.MoveTo(x, 0.0)
 		r, g, b, a := random(0, 245), random(0, 255), random(0, 255), 255
@@ -104,98 +106,138 @@ func TestDrawLines(pays map[string]Country, population int) {
 		//gc.LineTo(x3, y3)
 		gc.Stroke()
 	}
-	deathbygun, guns, rank := prepareData(pays["canada"], population)
 
-	for j := 1; j < guns; j++ {
-		gc.SetLineWidth(0)
-		x4, y4 := float64(random(0, 844)), float64(random(0, 1600))
-		draw2d.Circle(gc, x4, y4, 2) // left eye
-		gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
-		gc.FillStroke()
-	}
-
-	for j := 1; j < deathbygun; j++ {
-		gc.SetLineWidth(0)
-		x4, y4 := float64(random(0, 844)), float64(random(0, 1600))
-		draw2d.Circle(gc, x4, y4, 6) // left eye
-		gc.SetFillColor(color.Black)
-		gc.FillStroke()
-	}
-	fmt.Printf("canada d=%d g=%d r=%d p=%d \n", deathbygun, guns, rank)
-
-	deathbygun, guns, rank = prepareData(pays["us"], population)
-
-	for j := 1; j < guns; j++ {
-		gc.SetLineWidth(0)
-		x4, y4 := float64(random(859, 1703)), float64(random(0, 1600))
-		draw2d.Circle(gc, x4, y4, 2) // left eye
-		gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
-		gc.FillStroke()
-	}
-
-	for j := 1; j < deathbygun; j++ {
-		gc.SetLineWidth(0)
-		x4, y4 := float64(random(859, 1703)), float64(random(0, 1600))
-		draw2d.Circle(gc, x4, y4, 6) // left eye
-		gc.SetFillColor(color.Black)
-		gc.FillStroke()
-	}
-	fmt.Printf("us d=%d g=%d r=%d \n", deathbygun, guns, rank)
-	deathbygun, guns, rank = prepareData(pays["uk"], population)
-
-	for j := 1; j < guns; j++ {
-		gc.SetLineWidth(0)
-		x5, y5 := float64(random(1718, 2562)), float64(random(0, 1600))
-		draw2d.Circle(gc, x5, y5, 2) // left eye
-		gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
-		gc.FillStroke()
-	}
-
-	for j := 1; j < deathbygun; j++ {
-		gc.SetLineWidth(0)
-		x6, y6 := float64(random(1718, 2562)), float64(random(0, 1600))
-		draw2d.Circle(gc, x6, y6, 6) // left eye
-		gc.SetFillColor(color.Black)
-		gc.FillStroke()
-	}
-	fmt.Printf("UK d=%d g=%d r=%d \n", deathbygun, guns, rank)
-	x, y := 1.0, 300.0
-	x1, y1 := 300.4, 400.4
-	x2, y2 := 700.6, 200.6
-	x3, y3 := 945.4, 300.0
-	gc.SetFillColor(color.RGBA{255, 255, 255, 255})
-	gc.SetStrokeColor(color.RGBA{255, 255, 255, 255})
-	gc.SetLineWidth(10)
-	gc.MoveTo(x, y)
-	gc.CubicCurveTo(x1, y1, x2, y2, x3, y3)
-	gc.Stroke()
-	gc.MoveTo(800, 420)
-	gc.SetFillColor(color.White)
-	gc.SetFontSize(120)
 	gc.SetFontData(draw2d.FontData{"eltobito", draw2d.FontFamilyMono, draw2d.FontStyleBold | draw2d.FontStyleItalic})
+	for name, pays := range angloSaxon {
+		deathbygun, guns, rank := prepareData(pays, population)
 
-	gc.FillString("CA")
-	gc.FillStringAt("CA", 400.0, 800)
-	gc.FillString("CA")
+		for j := 1; j < guns; j++ {
+			gc.SetLineWidth(0)
+			x4, y4 := float64(random(pays.From, pays.To)), float64(random(0, 1600))
+			draw2d.Circle(gc, x4, y4, 2)
+			gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
+			gc.FillStroke()
+		}
 
-	gc.MoveTo(844, 0.0)
-	gc.LineTo(844, 1600)
-	gc.SetLineWidth(30)
-	gc.Stroke()
+		for j := 1; j < deathbygun; j++ {
+			gc.SetLineWidth(0)
+			x4, y4 := float64(random(pays.From, pays.To)), float64(random(0, 1600))
+			draw2d.Circle(gc, x4, y4, 6)
+			gc.SetFillColor(color.Black)
+			gc.FillStroke()
+		}
+		fmt.Printf("name=%d d=%d g=%d r=%d p=%d \n", name, deathbygun, guns, rank)
 
-	gc.FillString("US")
-	gc.FillStringAt("US", 1200.0, 800)
-	gc.FillString("US")
+		gc.SetFillColor(color.White)
+		gc.SetFontSize(120)
+		gc.FillString(name)
+		gc.FillStringAt(name, float64(pays.To-367), 1600/2)
+		gc.FillString(name)
+	}
+	for name, pays := range angloSaxon {
+		//gc.SetFillColor(color.RGBA{0, 0, 0, 255})
+		if name != "UK" {
+			gc.SetStrokeColor(color.White)
+			gc.MoveTo(float64(pays.To), 0.0)
+			gc.LineTo(float64(pays.To), 1600)
+			gc.SetLineWidth(25)
+			gc.Stroke()
+		}
+	}
 
-	gc.MoveTo(1715, 0.0)
-	gc.LineTo(1715, 1600)
-	gc.SetLineWidth(30)
-	gc.Stroke()
+	/*
+		deathbygun, guns, rank := prepareData(pays["canada"], population)
 
-	gc.FillString("UK")
-	gc.FillStringAt("UK", 2044.0, 800)
-	gc.FillString("UK")
-	gc.Stroke()
+		for j := 1; j < guns; j++ {
+			gc.SetLineWidth(0)
+			x4, y4 := float64(random(0, 844)), float64(random(0, 1600))
+			draw2d.Circle(gc, x4, y4, 2) // left eye
+			gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
+			gc.FillStroke()
+		}
+
+		for j := 1; j < deathbygun; j++ {
+			gc.SetLineWidth(0)
+			x4, y4 := float64(random(0, 844)), float64(random(0, 1600))
+			draw2d.Circle(gc, x4, y4, 6) // left eye
+			gc.SetFillColor(color.Black)
+			gc.FillStroke()
+		}
+		fmt.Printf("canada d=%d g=%d r=%d p=%d \n", deathbygun, guns, rank)
+
+		deathbygun, guns, rank = prepareData(pays["us"], population)
+
+		for j := 1; j < guns; j++ {
+			gc.SetLineWidth(0)
+			x4, y4 := float64(random(859, 1703)), float64(random(0, 1600))
+			draw2d.Circle(gc, x4, y4, 2) // left eye
+			gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
+			gc.FillStroke()
+		}
+
+		for j := 1; j < deathbygun; j++ {
+			gc.SetLineWidth(0)
+			x4, y4 := float64(random(859, 1703)), float64(random(0, 1600))
+			draw2d.Circle(gc, x4, y4, 6) // left eye
+			gc.SetFillColor(color.Black)
+			gc.FillStroke()
+		}
+		fmt.Printf("us d=%d g=%d r=%d \n", deathbygun, guns, rank)
+		deathbygun, guns, rank = prepareData(pays["uk"], population)
+
+		for j := 1; j < guns; j++ {
+			gc.SetLineWidth(0)
+			x5, y5 := float64(random(1718, 2562)), float64(random(0, 1600))
+			draw2d.Circle(gc, x5, y5, 2) // left eye
+			gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
+			gc.FillStroke()
+		}
+
+		for j := 1; j < deathbygun; j++ {
+			gc.SetLineWidth(0)
+			x6, y6 := float64(random(1718, 2562)), float64(random(0, 1600))
+			draw2d.Circle(gc, x6, y6, 6) // left eye
+			gc.SetFillColor(color.Black)
+			gc.FillStroke()
+		}
+		fmt.Printf("UK d=%d g=%d r=%d \n", deathbygun, guns, rank)
+		x, y := 1.0, 300.0
+		x1, y1 := 300.4, 400.4
+		x2, y2 := 700.6, 200.6
+		x3, y3 := 945.4, 300.0
+		gc.SetFillColor(color.RGBA{156, 9, 29, 255})
+		gc.SetStrokeColor(color.RGBA{156, 6, 29, 255})
+		gc.SetLineWidth(10)
+		gc.MoveTo(x, y)
+		gc.CubicCurveTo(x1, y1, x2, y2, x3, y3)
+		gc.Stroke()
+		gc.MoveTo(800, 420)
+		gc.SetFillColor(color.White)
+		gc.SetFontSize(120)
+		gc.SetFontData(draw2d.FontData{"eltobito", draw2d.FontFamilyMono, draw2d.FontStyleBold | draw2d.FontStyleItalic})
+
+		gc.FillString("CA")
+		gc.FillStringAt("CA", 400.0, 800)
+		gc.FillString("CA")
+
+		gc.MoveTo(844, 0.0)
+		gc.LineTo(844, 1600)
+		gc.SetLineWidth(30)
+		gc.Stroke()
+
+		gc.FillString("US")
+		gc.FillStringAt("US", 1200.0, 800)
+		gc.FillString("US")
+
+		gc.MoveTo(1715, 0.0)
+		gc.LineTo(1715, 1600)
+		gc.SetLineWidth(30)
+		gc.Stroke()
+
+		gc.FillString("UK")
+		gc.FillStringAt("UK", 2044.0, 800)
+		gc.FillString("UK")
+		gc.Stroke()*/
 
 	saveToPngFile("TestDrawLines", im)
 }
