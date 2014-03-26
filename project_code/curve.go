@@ -70,7 +70,7 @@ func Show(name string) {
 }
 
 func TestDrawLines(pays map[string]Country, population int) {
-	im, gc := initGc(2586, 1600)
+	im, gc := initGc(2562, 1600)
 	rand.Seed(time.Now().UnixNano())
 	fmt.Printf("population %d \n", population)
 	// draw a cubic curve
@@ -86,10 +86,10 @@ func TestDrawLines(pays map[string]Country, population int) {
 	//gc.Stroke()
 	//for y := 1.0; y < 600.0; y++ {
 
-	for x := 0.0; x < 2559.0; {
+	for x := 0.0; x < 2562.0; {
 
 		gc.MoveTo(x, 0.0)
-		r, g, b, a := rand.Intn(200), rand.Intn(200), rand.Intn(200), 255
+		r, g, b, a := random(0, 245), random(0, 255), random(0, 255), 255
 
 		//rg := random(0, rank)
 		//r, g, b, a := r, g, b, rank
@@ -108,15 +108,15 @@ func TestDrawLines(pays map[string]Country, population int) {
 
 	for j := 1; j < guns; j++ {
 		gc.SetLineWidth(0)
-		x4, y4 := float64(random(10, 844)), float64(random(0, 1600))
+		x4, y4 := float64(random(0, 844)), float64(random(0, 1600))
 		draw2d.Circle(gc, x4, y4, 2) // left eye
-		gc.SetFillColor(color.RGBA{255, 255, 0, uint8(255)})
+		gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
 		gc.FillStroke()
 	}
 
 	for j := 1; j < deathbygun; j++ {
 		gc.SetLineWidth(0)
-		x4, y4 := float64(random(10, 844)), float64(random(0, 1600))
+		x4, y4 := float64(random(0, 844)), float64(random(0, 1600))
 		draw2d.Circle(gc, x4, y4, 6) // left eye
 		gc.SetFillColor(color.Black)
 		gc.FillStroke()
@@ -127,15 +127,15 @@ func TestDrawLines(pays map[string]Country, population int) {
 
 	for j := 1; j < guns; j++ {
 		gc.SetLineWidth(0)
-		x4, y4 := float64(random(871, 1715)), float64(random(0, 1600))
+		x4, y4 := float64(random(859, 1703)), float64(random(0, 1600))
 		draw2d.Circle(gc, x4, y4, 2) // left eye
-		gc.SetFillColor(color.White)
+		gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
 		gc.FillStroke()
 	}
 
 	for j := 1; j < deathbygun; j++ {
 		gc.SetLineWidth(0)
-		x4, y4 := float64(random(871, 1715)), float64(random(0, 1600))
+		x4, y4 := float64(random(859, 1703)), float64(random(0, 1600))
 		draw2d.Circle(gc, x4, y4, 6) // left eye
 		gc.SetFillColor(color.Black)
 		gc.FillStroke()
@@ -145,7 +145,7 @@ func TestDrawLines(pays map[string]Country, population int) {
 
 	for j := 1; j < guns; j++ {
 		gc.SetLineWidth(0)
-		x5, y5 := float64(random(1742, 2586)), float64(random(0, 1600))
+		x5, y5 := float64(random(1718, 2562)), float64(random(0, 1600))
 		draw2d.Circle(gc, x5, y5, 2) // left eye
 		gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
 		gc.FillStroke()
@@ -153,7 +153,7 @@ func TestDrawLines(pays map[string]Country, population int) {
 
 	for j := 1; j < deathbygun; j++ {
 		gc.SetLineWidth(0)
-		x6, y6 := float64(random(1742, 2586)), float64(random(0, 1600))
+		x6, y6 := float64(random(1718, 2562)), float64(random(0, 1600))
 		draw2d.Circle(gc, x6, y6, 6) // left eye
 		gc.SetFillColor(color.Black)
 		gc.FillStroke()
@@ -163,19 +163,38 @@ func TestDrawLines(pays map[string]Country, population int) {
 	x1, y1 := 300.4, 400.4
 	x2, y2 := 700.6, 200.6
 	x3, y3 := 945.4, 300.0
-	gc.SetFillColor(color.RGBA{255, 128, 0, 255})
-	gc.SetStrokeColor(color.RGBA{255, 128, 0, 255})
+	gc.SetFillColor(color.RGBA{255, 255, 255, 255})
+	gc.SetStrokeColor(color.RGBA{255, 255, 255, 255})
 	gc.SetLineWidth(10)
 	gc.MoveTo(x, y)
 	gc.CubicCurveTo(x1, y1, x2, y2, x3, y3)
 	gc.Stroke()
+	gc.MoveTo(800, 420)
+	gc.SetFillColor(color.White)
+	gc.SetFontSize(120)
+	gc.SetFontData(draw2d.FontData{"eltobito", draw2d.FontFamilyMono, draw2d.FontStyleBold | draw2d.FontStyleItalic})
+
+	gc.FillString("CA")
+	gc.FillStringAt("CA", 400.0, 800)
+	gc.FillString("CA")
+
 	gc.MoveTo(844, 0.0)
 	gc.LineTo(844, 1600)
-	gc.SetLineWidth(27)
+	gc.SetLineWidth(30)
 	gc.Stroke()
+
+	gc.FillString("US")
+	gc.FillStringAt("US", 1200.0, 800)
+	gc.FillString("US")
+
 	gc.MoveTo(1715, 0.0)
 	gc.LineTo(1715, 1600)
-	gc.SetLineWidth(27)
+	gc.SetLineWidth(30)
+	gc.Stroke()
+
+	gc.FillString("UK")
+	gc.FillStringAt("UK", 2044.0, 800)
+	gc.FillString("UK")
 	gc.Stroke()
 
 	saveToPngFile("TestDrawLines", im)
