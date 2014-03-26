@@ -7,7 +7,7 @@
             "ios"
         ],
         "toolkits": [
-            "go"
+            "TOML"
         ]
     },
     "themes": [
