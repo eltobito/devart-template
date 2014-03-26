@@ -7,10 +7,11 @@
             "ios"
         ],
         "toolkits": [
-            "go"
+            "TOML"
         ]
     },
     "themes": [
-        "insert themes"
+        "Weapons",
+        "Gun control"
     ]
 }
