@@ -1,8 +1,6 @@
 {
     "technologies": {
-        "apis": [
-            "twitter"
-        ],
+        "apis": [ ],
         "platforms": [
             "ios"
         ],
