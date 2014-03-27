@@ -1,4 +1,4 @@
-Here some image I produce with the data I use to create the artwork
+Here some image I produce with the data I use to create the artwork. A god portion of my creative process
 
 ![Example Image](../project_images/Draf.png?raw=true "Example Image")
 
