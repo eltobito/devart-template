@@ -5,7 +5,7 @@ and I will be won't have any string attached for the library.
 
 I have done a couple of test to generate an image where every pixel are random. 
 Specifically I tried to reproduce the work I have done in python in GO language where
-the example I found in Python doesn't exist in GO...or I just didn't find it on th net :-) 
+the example I found in Python doesn't exist in GO...or I just didn't find it on the net :-) 
 
 
 ![Example Image](../project_images/go.png?raw=true "Random pixel")
@@ -44,4 +44,4 @@ the example I found in Python doesn't exist in GO...or I just didn't find it on 
     
       saveToPngFile("TestDrawMosaic", im)
     }
-..
+''
