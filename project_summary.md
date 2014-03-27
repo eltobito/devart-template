@@ -12,8 +12,8 @@ GitHub : https://github.com/eltobito/devart-template
 ## Description
 One of the most twisted relation we have in this modern society is the relation people have with firearms.
 Most people live in cities. Why people have the need to own firearms? Why goverments are reluctant to 
-limit the possesion of firearms like semi-automatic? This project want to expose impact of firearms
-on the society 
+limit the possesion of firearms like semi-automatic? This project want give an overview of the presence of
+firearms in our society
 
 
 
