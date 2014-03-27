@@ -10,7 +10,7 @@ import (
 
 	"image/png"
 	"log"
-	"math"
+
 	"math/rand"
 	"os"
 	"os/exec"
@@ -50,13 +50,7 @@ func main() {
 		fmt.Printf("Server: %s %f \n", name, can.Deathbygun)
 	}
 
-	//TestStar()
-	//var pop = averagepop(pays.Countries["canada"].Pop, pays.Countries["us"].Pop, pays.Countries["uk"].Pop)
-
-	TestDrawLines(angloSaxon.Countries, 1000)
-	//TestDrawMosaic()
-	//TestFillString()
-	//spot()
+	GunsOverview(angloSaxon.Countries, 1000)
 
 }
 
@@ -71,7 +65,7 @@ func Show(name string) {
 	}
 }
 
-func TestDrawLines(angloSaxon map[string]Country, population int) {
+func GunsOverview(angloSaxon map[string]Country, population int) {
 	im, gc := initGc(2250, 1600)
 	rand.Seed(time.Now().UnixNano())
 	fmt.Printf("population %d \n", population)
@@ -88,7 +82,7 @@ func TestDrawLines(angloSaxon map[string]Country, population int) {
 	//gc.Stroke()
 	//for y := 1.0; y < 600.0; y++ {
 
-	for x := 0.0; x < 2300.0; {
+	for x := 0.0; x < 2250.0; {
 
 		gc.MoveTo(x, 0.0)
 		r, g, b, a := random(0, 245), random(0, 255), random(0, 255), 255
@@ -106,32 +100,45 @@ func TestDrawLines(angloSaxon map[string]Country, population int) {
 		//gc.LineTo(x3, y3)
 		gc.Stroke()
 	}
+	for _, pays := range angloSaxon {
+		for x := pays.From; x < pays.To; {
+			var curtainsize = pays.Guns * 16
+			var curtainsizepos = float64(pays.Rank)
+			gc.SetStrokeColor(color.RGBA{255, 255, 255, 240})
+			gc.MoveTo(float64(x), curtainsizepos)
+			x++
+			gc.LineTo(float64(x), curtainsize)
+			gc.SetLineWidth(1)
+			gc.Stroke()
 
-	gc.SetFontData(draw2d.FontData{"eltobito", draw2d.FontFamilyMono, draw2d.FontStyleBold | draw2d.FontStyleItalic})
+		}
+	}
+
+	gc.SetFontData(draw2d.FontData{"pshift", draw2d.FontFamilyMono, draw2d.FontStyleBold | draw2d.FontStyleItalic})
 	for name, pays := range angloSaxon {
 		deathbygun, guns, rank := prepareData(pays, population)
-
-		for j := 1; j < guns; j++ {
-			gc.SetLineWidth(0)
-			x4, y4 := float64(random(pays.From, pays.To)), float64(random(0, 1600))
-			draw2d.Circle(gc, x4, y4, 2)
-			gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
-			gc.FillStroke()
-		}
-
+		/*
+			for j := 1; j < guns; j++ {
+				gc.SetLineWidth(0)
+				x4, y4 := float64(random(pays.From, pays.To)), float64(random(0, 1600))
+				draw2d.Circle(gc, x4, y4, 2)
+				gc.SetFillColor(color.RGBA{255, 0, 0, uint8(255)})
+				gc.FillStroke()
+			}
+		*/
 		for j := 1; j < deathbygun; j++ {
 			gc.SetLineWidth(0)
 			x4, y4 := float64(random(pays.From, pays.To)), float64(random(0, 1600))
 			draw2d.Circle(gc, x4, y4, 6)
-			gc.SetFillColor(color.Black)
+			gc.SetFillColor(color.RGBA{204, 0, 0, 255})
 			gc.FillStroke()
 		}
 		fmt.Printf("name=%d d=%d g=%d r=%d p=%d \n", name, deathbygun, guns, rank)
 
-		gc.SetFillColor(color.White)
+		gc.SetFillColor(color.Black)
 		gc.SetFontSize(120)
-		gc.FillString(name)
-		gc.FillStringAt(name, float64(pays.To-367), 1600/2)
+		//gc.FillString(name)
+		gc.FillStringAt(name, float64(pays.To-360), 1600/2)
 		gc.FillString(name)
 	}
 	for name, pays := range angloSaxon {
@@ -143,8 +150,15 @@ func TestDrawLines(angloSaxon map[string]Country, population int) {
 			gc.SetLineWidth(25)
 			gc.Stroke()
 		}
+		/*
+			gc.SetStrokeColor(color.White)
+			gc.MoveTo(float64(pays.From), 0.0)
+			gc.LineTo(float64(pays.From), pays.Guns*16)
+			gc.SetLineWidth(75)
+			gc.Stroke()
+			fmt.Printf("guns %d", pays.Guns*16, name)
+		*/
 	}
-
 	/*
 		deathbygun, guns, rank := prepareData(pays["canada"], population)
 
@@ -239,7 +253,7 @@ func TestDrawLines(angloSaxon map[string]Country, population int) {
 		gc.FillString("UK")
 		gc.Stroke()*/
 
-	saveToPngFile("TestDrawLines", im)
+	saveToPngFile("GunsOverview", im)
 }
 
 func random(min, max int) int {
@@ -254,36 +268,6 @@ func prepareData(pays Country, pop int) (int, int, int) {
 	var rank = int(pays.Rank * 255 / 178)
 
 	return int(deathbygun), int(guns), rank
-}
-
-func canada() (int, int, int, int) {
-	var deathbygun = 0.5 * 50000 / 100
-	var guns = 23.8 * 50000 / 100
-	var rank = int(12 * 255 / 178)
-	var pop = 35344962
-	return int(deathbygun), int(guns), rank, pop
-}
-
-func us() (int, int, int, int) {
-	var deathbygun = 3.6 * 50000 / 100
-	var guns = 100.0 * 50000 / 100
-	var rank = int(1 * 255 / 178)
-	var pop = 317751000
-	return int(deathbygun), int(guns), rank, pop
-
-}
-
-func uk() (int, int, int, int) {
-	var deathbygun = 0.06 * 50000 / 100
-	var guns = 6.7 * 50000 / 100
-	var rank = int(22 * 255 / 178)
-	var pop = 63705000
-	return int(deathbygun), int(guns), rank, pop
-}
-
-func averagepop(popca, popus, popuk int) int {
-	avr_pop := (popca + popus + popuk) / 3
-	return int(avr_pop)
 }
 
 func initGc(w, h int) (image.Image, draw2d.GraphicContext) {
@@ -321,144 +305,4 @@ func saveToPngFile(TestName string, m image.Image) {
 	}
 	fmt.Printf("Wrote %s OK.\n", filePath)
 	Show(filePath)
-}
-func TestDrawCubicCurve() {
-	i, gc := initGc(w, h)
-	// draw a cubic curve
-	x, y := 25.6, 128.0
-	x1, y1 := 102.4, 230.4
-	x2, y2 := 153.6, 25.6
-	x3, y3 := 230.4, 128.0
-	gc.SetFillColor(color.RGBA{0, 0, 255, 255})
-	gc.SetLineWidth(10)
-	gc.MoveTo(x, y)
-	gc.CubicCurveTo(x1, y1, x2, y2, x3, y3)
-	gc.Stroke()
-
-	gc.SetStrokeColor(color.RGBA{0, 200, 255, 255})
-
-	gc.SetLineWidth(6)
-	// draw segment of curve
-	gc.MoveTo(x, y)
-	gc.LineTo(x1, y1)
-	gc.LineTo(x2, y2)
-	gc.LineTo(x3, y3)
-	gc.Stroke()
-	saveToPngFile("TestDrawCubicCurve", i)
-}
-func TestStar() {
-	i, gc := initGc(w, h)
-
-	// draw a cubic curve
-	rand.Seed(time.Now().UnixNano())
-	rand.Intn(255)
-	r, g, b, a := rand.Intn(255), rand.Intn(255), rand.Intn(255), 255
-	var (
-		cstart color.Color = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
-	)
-
-	for i := 0.0; i < 360; i++ { // Go from 0 to 360 degrees in 10 degree steps
-		gc.Save()
-		r, g, b, a := rand.Intn(255), rand.Intn(255), rand.Intn(255), 255
-		//r, g, b, a := 255, 128, 0, rand.Intn(255)
-		cstart = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
-		gc.SetStrokeColor(cstart)
-		gc.SetLineWidth(1) // Keep rotations temporary
-		gc.Translate(144, 144)
-		gc.Rotate(i * (math.Pi / 180.0)) // Rotate by degrees on stack from 'for'
-		gc.MoveTo(0, 0)
-		gc.LineTo(20, 0)
-		gc.Stroke()
-		gc.Restore()
-	}
-	saveToPngFile("TestStar", i)
-}
-func TestFillString() {
-	i, gc := initGc(300, 300)
-	r, g, b, a := 255, 0, 0, 255
-	var (
-		cstart = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
-	)
-	draw2d.RoundRect(gc, 5, 5, 95, 95, 10, 10)
-	//draw2d.Circle(path, cx, cy, radius)
-	gc.SetFillColor(cstart)
-	gc.FillStroke()
-	gc.SetFontSize(25)
-	gc.MoveTo(10, 52)
-	gc.SetFillColor(color.White)
-	gc.SetFontData(draw2d.FontData{"eltobito", draw2d.FontFamilyMono, draw2d.FontStyleBold | draw2d.FontStyleItalic})
-	width := gc.FillString("cou")
-	fmt.Printf("width: %f\n", width)
-	gc.RMoveTo(width+1, 0)
-	gc.FillString("cou")
-	gc.FillStringAt("Tobie Desjardins", 5.0, 150)
-	gc.FillString("Tobie Desjardins")
-	saveToPngFile("TestFillString", i)
-}
-
-/*
-func spot2(i image) {
-        gc := draw2d.NewGraphicContext(i)
-        for j := 1; j < 100; j++ {
-                gc.SetLineWidth(1)
-                x4, y4 := float64(random(325, 605)), float64(random(10, 585))
-                draw2d.Circle(gc, x4, y4, 2) // left eye
-                gc.SetFillColor(color.White)
-                gc.FillStroke()
-        }
-
-        for j := 1; j < 10; j++ {
-                gc.SetLineWidth(1)
-                x4, y4 := float64(random(325, 605)), float64(random(10, 585))
-                draw2d.Circle(gc, x4, y4, 2) // left eye
-                gc.SetFillColor(color.Black)
-                gc.FillStroke()
-        }
-*/
-func spot() {
-	x, y := 50.0, 50.0
-	im, gc := initGc(300, 300)
-
-	draw2d.Circle(gc, x+60, y+45, 60) // left eye
-	gc.SetFillColor(color.Black)
-	gc.FillStroke()
-
-	saveToPngFile("spot", im)
-}
-
-func TestDrawMosaic() {
-	im, gc := initGc(300, 300)
-	// draw a cubic curve
-	rand.Seed(time.Now().UnixNano())
-	rand.Intn(255)
-
-	r, g, b, a := random(0, 255), random(0, 255), random(0, 255), 255
-
-	//fmt.Printf("%d\nallo%d", b,r)
-	//b1 := m.Bounds()
-	gc.SetLineWidth(1)
-	gc.MoveTo(1.0, 1.0)
-	var (
-		cstart color.Color = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
-	)
-	gc.SetStrokeColor(cstart)
-	gc.Stroke()
-	for y := 1.0; y < 300.0; y++ {
-		for x := 1.0; x < 300.0; {
-
-			gc.MoveTo(x, y)
-			r, g, b, a := random(0, 255), random(0, 255), random(0, 255), 255
-			cstart = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
-			gc.SetStrokeColor(cstart)
-
-			// draw segment of curve
-
-			x++
-			gc.LineTo(x, y)
-			//gc.LineTo(x3, y3)
-			gc.Stroke()
-		}
-	}
-
-	saveToPngFile("TestDrawMosaic", im)
 }
