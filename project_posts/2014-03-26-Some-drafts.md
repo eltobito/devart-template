@@ -1,5 +1,4 @@
-Here some image I produce with the data I use to create the artwork. A god portion of my creative process
-I'm fixed now of the data I will use and fron wich country
+I'm fixed now of the data I will use and from wich country
 
 The countries will be Canada, US and UK.
 
@@ -11,7 +10,7 @@ The data I will use from each country is
 
 [Number of Privately Owned Firearms - World Ranking](http://www.gunpolicy.org/firearms/compare/194/number_of_privately_owned_firearms_-_world_ranking/31,280 "")
 
-
+Here some image I produce with the data I use to create the artwork.
 
 ![Example Image](../project_images/Draf.png?raw=true "Example Image")
 
