@@ -9,7 +9,7 @@ the example I found in Python doesn't exist in GO...or I just didn't find it on 
 
 
 ![Example Image](../project_images/go.png?raw=true "Random pixel")
-''
+
     func TestDrawMosaic() {
       im, gc := initGc(300, 300)
       // draw a cubic curve
@@ -44,4 +44,4 @@ the example I found in Python doesn't exist in GO...or I just didn't find it on 
     
       saveToPngFile("TestDrawMosaic", im)
     }
-''
+
