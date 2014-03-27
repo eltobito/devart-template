@@ -1,12 +1,15 @@
-I decide to use another language instead of Python. The reason is that way I won't nead to
+I decide to use another language instead of Python. The reason is that way I won't need to
 use a Google api to be respect the rules of the project. I have done a couple of research and 
-i saw that GO have an image library. So I decide to learn and use that language from google
+I saw that GO have an image library. So I decide to learn and use that language from Google
 and I will be won't have any string attached for the library.
 
 I have done a couple of test to generate an image where every pixel are random. 
+Specifically I tried to reproduce the work I have done in python in GO language where
+the example I found in Python doesn't exist in GO...or I just didn't find it on th net :-) 
+
 
 ![Example Image](../project_images/go.png?raw=true "Random pixel")
-
+''
     func TestDrawMosaic() {
       im, gc := initGc(300, 300)
       // draw a cubic curve
@@ -31,9 +34,7 @@ I have done a couple of test to generate an image where every pixel are random.
           r, g, b, a := random(0, 255), random(0, 255), random(0, 255), 255
           cstart = color.RGBA{uint8(r), uint8(g), uint8(b), uint8(a)}
           gc.SetStrokeColor(cstart)
-    
-          // draw segment of curve
-    
+
           x++
           gc.LineTo(x, y)
           //gc.LineTo(x3, y3)
@@ -43,3 +44,4 @@ I have done a couple of test to generate an image where every pixel are random.
     
       saveToPngFile("TestDrawMosaic", im)
     }
+..
