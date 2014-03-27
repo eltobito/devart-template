@@ -20,8 +20,13 @@ on the society
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
 ```
-function test() {
-  console.log("Printing a test");
+func prepareData(pays Country, pop int) (int, int, int) {
+
+	var deathbygun = pays.Deathbygun * float64(pop)
+	var guns = pays.Guns * float64(pop)
+	var rank = int(pays.Rank * 255 / 178)
+
+	return int(deathbygun), int(guns), rank
 }
 ```
 ## Links to External Libraries
