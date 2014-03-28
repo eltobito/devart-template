@@ -1,6 +1,6 @@
-I'm fixed now of the data I will use and from wich country
+I'm fixed now of the data I will use and from which country
 
-The countries will be Canada, US and UK.
+The countries will be Canada, US and UK. Countries with Anglo-saxon culture
 
 The data I will use from each country is
 
