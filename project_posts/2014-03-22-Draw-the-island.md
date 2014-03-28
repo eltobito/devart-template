@@ -3,7 +3,7 @@ I want to manualy draw the shape of the Island and then digitilize the draw
 and than fill the inside of the island with color, curve base on matrix retrieve from
 the number of tweet of the Montreal region.
 
-For now I have tweeter im my mind but a can change my mind after I'll explore different api i'll find
+For now I have tweeter in my mind but I can change my mind after I'll explore differents api I'll find
 on the web.
 
 Below is the picture of my draw

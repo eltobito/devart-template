@@ -1,13 +1,14 @@
-I decide to use another language instead of Python. The reason is that way I won't need to
+I decide to use another language instead of Python. The reason is that  I won't need to
 use a Google api to be respect the rules of the project. I have done a couple of research and 
 I saw that GO have an image library. So I decide to learn and use that language from Google
-and I  won't have any string attached for the api. Oups I forgot...I don't know GO...So 1 week to know how to use it
+and I won't have any string attached for the api. Oups I forgot...I don't know GO...So I have 1 week to know how to use it
 and be able to deliver the project.
 
 
-I have done a couple of test to generate an image where every pixel are random. 
-Specifically I tried to reproduce the work I have done in python in GO language where
-the example I found in Python doesn't exist in GO...or I just didn't find it on the net :-) 
+I have done a couple of test to generate an image where every pixels are random. 
+Specifically I tried to reproduce the test I have done in python but with GO language.
+ 
+
 
 
 ![Example Image](../project_images/go.png?raw=true "Random pixel")
