@@ -1,25 +1,22 @@
 [Countries]
 
 	[Countries.CA]
-	deathbygun = 0.5
+	deathbygun = 2.38
 	guns = 23.8 
 	rank = 12
-	pop = 35344962
-	from = 0
-	to = 750
+	from = 19
+	to = 1073
 
 	[Countries.US]
-	deathbygun = 3.6
+	deathbygun = 10.3
 	guns = 100.0
 	rank = 1
-	pop = 317751000
-	from = 750
-	to = 1500
+	from = 1073
+	to = 2127
 
 	[Countries.UK]
-	deathbygun = 0.06
+	deathbygun = 0.25
 	guns = 6.7 
 	rank = 22
-	pop = 63705000
-	from = 1500
-	to = 2250
+	from = 2127
+	to = 3181
