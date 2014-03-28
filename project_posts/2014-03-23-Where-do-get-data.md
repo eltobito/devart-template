@@ -1,3 +1,5 @@
+#Where to get data ? And what kind ?
+
 I have done some research to find which api is the best to retrieve data that are making sense for the feeling I want to expose. The Montreal Island image is now dead. I drop that idea.
 
 I decide to compare 3 countries with data generate by people from those countries. Words that have a social meaning for me like love, fun or family.
