@@ -13,9 +13,10 @@ GitHub : https://github.com/eltobito/devart-template
 One of the most twisted relation we have in this modern society is the relation people have with firearms.
 Most people live in cities. Why people have the need to own firearms? Why goverments are reluctant to 
 limit the possesion of firearms like semi-automatic? This project want give an overview of the presence of
-firearms in our society
+firearms in our society.
 
-
+The final result is on my Picassa
+<table style="width:194px;"><tr><td align="center" style="height:194px;background:url(https://www.gstatic.com/pwa/s/v/lighthousefe_213.01/transparent_album_background.gif) no-repeat left"><a href="https://picasaweb.google.com/114358707656696621914/DevArtOeuvreGunsControl?authuser=0&authkey=Gv1sRgCIfAvryl_6XPqgE&feat=embedwebsite"><img src="https://lh4.googleusercontent.com/-nXdgHWNnSsw/UzTpKakr8AE/AAAAAAAAMIM/V1PdzIawKJM/s160-c/DevArtOeuvreGunsControl.jpg" width="160" height="160" style="margin:1px 0 0 4px;"></a></td></tr><tr><td style="text-align:center;font-family:arial,sans-serif;font-size:11px"><a href="https://picasaweb.google.com/114358707656696621914/DevArtOeuvreGunsControl?authuser=0&authkey=Gv1sRgCIfAvryl_6XPqgE&feat=embedwebsite" style="color:#4D4D4D;font-weight:bold;text-decoration:none;">DevArt - Oeuvre Guns Control</a></td></tr></table>
 
 ## Example Code
 
