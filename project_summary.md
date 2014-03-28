@@ -1,7 +1,7 @@
-# Project Title
-Guns in a modern world
+# Firearms
 
-## Authors
+
+## Author
 Name : Tobie Charette
 
 Surname : Eltobito
@@ -10,15 +10,15 @@ GitHub : https://github.com/eltobito/devart-template
 
 
 ## Description
-One of the most twisted relation we have in this modern society is the relation we have with firearms.
+One of the most twisted relation we have in this modern society is the relation people have with firearms.
 Most people live in cities. Why people have the need to own firearms? Why goverments are reluctant to 
-limit the possesion of firearms like semi-automatic? This project want to expose impact of firarms
-on the society 
+limit the possesion of firearms like semi-automatic? This project want give an overview of the presence of
+firearms in our society
 
 
 
 ## Example Code
-NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
+
 ```
 func prepareData(pays Country, pop int) (int, int, int) {
 
