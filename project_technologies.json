@@ -2,7 +2,7 @@
     "technologies": {
         "apis": [ ],
         "platforms": [
-            "ios"
+            "osx"
         ],
         "toolkits": [
             "TOML"
